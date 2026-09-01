@@ -1,0 +1,16 @@
+{
+  "name": "growlightdb",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Grow Light DB — Compare LED grow lights by specs, price, and coverage.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.9"
+  }
+}

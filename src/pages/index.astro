@@ -1,0 +1,356 @@
+---
+import { lights, tag, categories } from '../lib/data.js';
+
+const sortOptions = [
+  { key: "default", label: "Featured" },
+  { key: "price-asc", label: "Price: Low to High" },
+  { key: "price-desc", label: "Price: High to Low" },
+  { key: "watts-desc", label: "Wattage: High to Low" },
+  { key: "rating-desc", label: "Rating: High to Low" },
+  { key: "deal", label: "Best Deal" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Compare 15 LED grow lights side by side by price, wattage, coverage, and rating. Real specs, honest picks, updated prices." />
+  <meta name="astro-dev-toolbar" content="false" />
+  <meta property="og:title" content="Grow Light DB — Compare LED Grow Lights" />
+  <meta property="og:description" content="Side-by-side comparison of 15 LED grow lights. Filter by price, wattage, coverage. Real specs, honest picks." />
+  <meta property="og:url" content="https://growlightdb.ronaldleonardo.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://growlightdb.ronaldleonardo.com" />
+  <title>Grow Light DB — Compare 15 LED Grow Lights Side by Side</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>" />
+  <script define:vars={{ buildLights: lights }}>
+    (async function(){
+      try {
+        const r = await fetch('/data/products.json');
+        const d = await r.json();
+        const live = Object.fromEntries(d.products.map(p => [p.id, p]));
+        document.querySelectorAll('[data-price-for]').forEach(el => {
+          const id = el.dataset.priceFor;
+          if(live[id] && live[id].price !== buildLights.find(l => l.id === id)?.price)
+            el.textContent = '$' + live[id].price;
+        });
+      } catch(e){}
+    })();
+  </script>
+  <style>
+    astro-dev-toolbar { display: none !important; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #1f2937;
+      background: #f8f9fb;
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+
+    header {
+      background: #0d3b1e;
+      color: white;
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+    header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; }
+    header .subtitle { font-size: 1.05rem; color: #a8e6c1; margin-top: 0.5rem; }
+    header .cta {
+      display: inline-block;
+      margin-top: 1.25rem;
+      background: #27ae60;
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    header .cta:hover { background: #1a6b3a; }
+
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1.25rem 0;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .stat { text-align: center; }
+    .stat .num { font-size: 1.5rem; font-weight: 800; color: #0d3b1e; }
+    .stat .label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .toolbar {
+      max-width: 1100px;
+      margin: 1.5rem auto 1rem;
+      padding: 0 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .search {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.65rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: inherit;
+    }
+    .filter-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 0.5rem 0.9rem;
+      border: 1px solid #d1d5db;
+      border-radius: 9999px;
+      background: white;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .filter-btn:hover { border-color: #27ae60; color: #27ae60; }
+    .filter-btn.active { background: #0d3b1e; color: white; border-color: #0d3b1e; }
+    .sort-select {
+      padding: 0.5rem 0.9rem;
+      border: 1px solid #d1d5db;
+      border-radius: 9999px;
+      background: white;
+      font-size: 0.78rem;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .light-grid {
+      max-width: 1100px;
+      margin: 1rem auto 2rem;
+      padding: 0 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .light-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem;
+      transition: box-shadow 0.15s;
+    }
+    .light-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .light-card .name { font-size: 1.1rem; font-weight: 700; color: #111827; margin-bottom: 0.15rem; }
+    .light-card .name a { color: #111827; text-decoration: none; }
+    .light-card .name a:hover { color: #27ae60; }
+    .light-card .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    .badge-overall { background: #d4f5e0; color: #0d3b1e; }
+    .badge-value { background: #dbeafe; color: #1e40af; }
+    .badge-budget { background: #fef3c7; color: #92400e; }
+    .badge-starter { background: #f3e8ff; color: #6b21a8; }
+    .badge-upgrade { background: #d1fae5; color: #065f46; }
+    .badge-large { background: #fce7f3; color: #9d174d; }
+    .badge-quality { background: #e0e7ff; color: #3730a3; }
+    .badge-commercial { background: #fef9c3; color: #854d0e; }
+    .badge-cheap { background: #fce7f3; color: #9d174d; }
+    .light-card .specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+      margin-top: 0.3rem;
+    }
+    .spec { font-size: 0.8rem; color: #6b7280; }
+    .spec strong { color: #374151; font-weight: 600; }
+    .light-card .right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .price { font-size: 1.4rem; font-weight: 800; color: #0d3b1e; }
+    .rating { font-size: 0.8rem; color: #6b7280; }
+    .stars { color: #f59e0b; }
+    .buy-btn {
+      display: inline-block;
+      background: #27ae60;
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: background 0.15s;
+    }
+    .buy-btn:hover { background: #1a6b3a; }
+    .no-results { text-align: center; padding: 3rem; color: #6b7280; }
+    .affiliate-note { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+    .affiliate-note p { font-size: 0.78rem; color: #9ca3af; text-align: center; }
+    footer {
+      text-align: center;
+      padding: 2rem 1.25rem;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    footer a { color: #6b7280; text-decoration: none; }
+    @media (max-width: 700px) {
+      html { font-size: 16px; }
+      header h1 { font-size: 1.7rem; }
+      .stats-bar { gap: 1.5rem; }
+      .light-card { grid-template-columns: 1fr; }
+      .light-card .right { text-align: left; flex-direction: row; align-items: center; flex-wrap: wrap; }
+      .toolbar { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      html { font-size: 15px; }
+      header { padding: 2rem 0 1.5rem; }
+      .stats-bar { flex-wrap: wrap; gap: 1rem; }
+    }
+  </style>
+  <!-- Analytics -->
+  <script>
+    (function(){var p=window.location.pathname;var r=document.referrer||'';(new Image()).src='http://localhost:8083/track?s=growlightdb&p='+encodeURIComponent(p)+'&r='+encodeURIComponent(r)})();
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Grow Light DB</h1>
+    <p class="subtitle">Compare 15 LED grow lights side by side. Real specs, honest picks, best prices.</p>
+    <a href="#grid" class="cta">See All Lights</a>
+  </div>
+</header>
+
+<div class="stats-bar">
+  <div class="stat"><div class="num">{lights.length}</div><div class="label">Lights Compared</div></div>
+  <div class="stat"><div class="num">${Math.min(...lights.map(l=>l.price))}</div><div class="label">Price From</div></div>
+  <div class="stat"><div class="num">{Math.max(...lights.map(l=>l.watts))}W</div><div class="label">Max Power</div></div>
+  <div class="stat"><div class="num">{Math.round(Math.max(...lights.map(l=>l.reviews))/1000)}K+</div><div class="label">Reviews Analyzed</div></div>
+</div>
+
+<div class="toolbar">
+  <input type="text" class="search" id="search" placeholder="Search by name, brand, or feature..." />
+  <div class="filter-group" id="filters">
+    {categories.map(cat => (
+      <button class="filter-btn" data-cat={cat.key}>{cat.label}</button>
+    ))}
+  </div>
+  <select class="sort-select" id="sort">
+    {sortOptions.map(opt => (
+      <option value={opt.key}>{opt.label}</option>
+    ))}
+  </select>
+</div>
+
+<div class="light-grid" id="grid">
+  {lights.map(light => {
+    const badgeClass = `badge-${light.best}`;
+    const badgeLabel = categories.find(c => c.key === light.best)?.label || light.best;
+    const wattsPerDollar = Math.round(light.watts / light.price * 100) / 100;
+    const link = `https://www.amazon.com/s?k=${light.search}&tag=${tag}`;
+    return (
+      <div class="light-card" data-cat={light.best} data-price={light.price} data-watts={light.watts} data-rating={light.rating} data-deal={wattsPerDollar}>
+        <div class="left">
+          <div class="name">
+            <a href="/{light.id}">{light.name}</a>
+            <span class={`badge ${badgeClass}`}>{badgeLabel}</span>
+          </div>
+          <div class="specs">
+            <span class="spec"><strong>{light.watts}W</strong> actual draw</span>
+            <span class="spec">Covers <strong>{light.coverage}</strong></span>
+            <span class="spec">Chips: <strong>{light.chips}</strong></span>
+            <span class="spec">{light.dimmable ? 'Dimmable' : 'Not dimmable'}</span>
+            <span class="spec">Noise: <strong>{light.noise}</strong></span>
+            <span class="spec">{light.weight} lbs</span>
+            <span class="spec"><strong>{wattsPerDollar}</strong> W/dollar</span>
+          </div>
+        </div>
+        <div class="right">
+          <div class="price" data-price-for={light.id}>${light.price}</div>
+          <div class="rating"><span class="stars">{'*'.repeat(Math.round(light.rating))}{' '.repeat(5-Math.round(light.rating))}</span> {light.rating} ({light.reviews.toLocaleString()})</div>
+          <a href={link} target="_blank" rel="nofollow sponsored" class="buy-btn">Check Price</a>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+<div class="no-results" id="noResults" style="display:none;">
+  <p>No lights match your search. Try a different filter.</p>
+</div>
+
+<div class="affiliate-note">
+  <p>We earn a commission if you click and buy through links on this site at no extra cost to you. All data sourced from manufacturer specs and verified user reviews.</p>
+</div>
+
+<footer>
+  <p>Grow Light DB &copy; 2026 &middot; <a href="https://tabletopharvest.com">Tabletop Harvest</a> &middot; Data from manufacturer specs and verified reviews</p>
+</footer>
+
+<script>
+const searchInput = document.getElementById('search');
+const cards = document.querySelectorAll('.light-card');
+const noResults = document.getElementById('noResults');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const sortSelect = document.getElementById('sort');
+let activeFilter = 'all';
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.cat;
+    render();
+  });
+});
+filterBtns[0].classList.add('active');
+
+searchInput.addEventListener('input', render);
+sortSelect.addEventListener('change', render);
+
+function render() {
+  const query = searchInput.value.toLowerCase().trim();
+  const sort = sortSelect.value;
+  let visible = Array.from(cards);
+  visible = visible.filter(card => {
+    const cat = card.dataset.cat;
+    const text = card.textContent.toLowerCase();
+    const matchesFilter = activeFilter === 'all' || cat === activeFilter;
+    const matchesSearch = !query || text.includes(query);
+    return matchesFilter && matchesSearch;
+  });
+  if (sort === 'price-asc') visible.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+  else if (sort === 'price-desc') visible.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+  else if (sort === 'watts-desc') visible.sort((a, b) => parseFloat(b.dataset.watts) - parseFloat(a.dataset.watts));
+  else if (sort === 'rating-desc') visible.sort((a, b) => parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating));
+  else if (sort === 'deal') visible.sort((a, b) => parseFloat(b.dataset.deal) - parseFloat(a.dataset.deal));
+  const grid = document.getElementById('grid');
+  visible.forEach(card => grid.appendChild(card));
+  cards.forEach(card => { card.style.display = visible.includes(card) ? '' : 'none'; });
+  noResults.style.display = visible.length === 0 ? '' : 'none';
+}
+</script>
+
+</body>
+</html>

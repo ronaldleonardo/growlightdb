@@ -1,0 +1,202 @@
+---
+import { lights, tag, categories } from '../lib/data.js';
+
+export async function getStaticPaths() {
+  return lights.map(light => ({
+    params: { slug: light.id },
+    props: { light },
+  }));
+}
+
+const { light } = Astro.props;
+const badgeClass = `badge-${light.best}`;
+const badgeLabel = categories.find(c => c.key === light.best)?.label || light.best;
+const link = `https://www.amazon.com/s?k=${light.search}&tag=${tag}`;
+const wattsPerDollar = Math.round(light.watts / light.price * 100) / 100;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{light.name} LED grow light review: {light.watts}W, covers {light.coverage}, {light.chips} chips, {light.rating} stars. Compare specs, price ${light.price}, and buy on Amazon." />
+  <meta name="astro-dev-toolbar" content="false" />
+  <meta property="og:title" content="{light.name} LED Grow Light Review — Specs, Price, Rating" />
+  <meta property="og:description" content="{light.watts}W actual draw, covers {light.coverage}, {light.chips}, {light.rating} stars. Compare prices and specs." />
+  <meta property="og:url" content="https://growlightdb.ronaldleonardo.com/{light.id}" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://growlightdb.ronaldleonardo.com/{light.id}" />
+  <title>{light.name} LED Grow Light — Specs, Price, and Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>" />
+  <script define:vars={{ buildLight: light }}>
+    (async function(){
+      try {
+        const r = await fetch('/data/products.json');
+        const d = await r.json();
+        const live = d.products.find(p => p.id === buildLight.id);
+        if(live && live.price !== buildLight.price) {
+          const el = document.querySelector('[data-live-price]');
+          if(el) el.textContent = '$' + live.price;
+        }
+      } catch(e){}
+    })();
+  </script>
+  <style>
+    astro-dev-toolbar { display: none !important; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #1f2937;
+      background: #f8f9fb;
+      line-height: 1.6;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 1.25rem; }
+
+    header {
+      background: #0d3b1e;
+      color: white;
+      padding: 2rem 0;
+    }
+    header .inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header a { color: #a8e6c1; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    header a:hover { color: white; }
+
+    .product-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    .product-card .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .badge-overall { background: #d4f5e0; color: #0d3b1e; }
+    .badge-value { background: #dbeafe; color: #1e40af; }
+    .badge-budget { background: #fef3c7; color: #92400e; }
+    .badge-starter { background: #f3e8ff; color: #6b21a8; }
+    .badge-upgrade { background: #d1fae5; color: #065f46; }
+    .badge-large { background: #fce7f3; color: #9d174d; }
+    .badge-quality { background: #e0e7ff; color: #3730a3; }
+    .badge-commercial { background: #fef9c3; color: #854d0e; }
+    h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+    .subtitle { color: #6b7280; margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .spec-item {
+      padding: 0.75rem 1rem;
+      background: #f8f9fb;
+      border-radius: 8px;
+    }
+    .spec-item .label { font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.15rem; }
+    .spec-item .value { font-size: 1rem; font-weight: 600; color: #111827; }
+    .price-large { font-size: 2.5rem; font-weight: 800; color: #0d3b1e; margin: 0.5rem 0; }
+    .rating-large { font-size: 1rem; color: #f59e0b; margin-bottom: 1.5rem; }
+    .buy-btn {
+      display: inline-block;
+      background: #27ae60;
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.15s;
+    }
+    .buy-btn:hover { background: #1a6b3a; }
+
+    .back-link {
+      display: inline-block;
+      margin: 1.5rem auto;
+      color: #27ae60;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .affiliate-note { max-width: 800px; margin: 1rem auto; padding: 0 1.25rem; }
+    .affiliate-note p { font-size: 0.78rem; color: #9ca3af; text-align: center; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #9ca3af; }
+    footer a { color: #6b7280; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .specs-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 1.4rem; }
+      .price-large { font-size: 2rem; }
+    }
+  </style>
+<!-- Analytics -->
+  <script>
+    (function(){var p=window.location.pathname;var r=document.referrer||'';(new Image()).src='http://localhost:8083/track?s=growlightdb&p='+encodeURIComponent(p)+'&r='+encodeURIComponent(r)})();
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <a href="/">Grow Light DB</a>
+    <a href="/">All Lights</a>
+  </div>
+</header>
+
+<div class="product-card">
+  <div>
+    <h1>{light.name} <span class="badge {badgeClass}">{badgeLabel}</span></h1>
+    <p class="subtitle">{light.watts}W LED grow light with {light.chips} chips. Covers {light.coverage}.</p>
+  </div>
+
+  <div class="specs-grid">
+    <div class="spec-item"><div class="label">Price</div><div class="value" data-live-price>${light.price}</div></div>
+    <div class="spec-item"><div class="label">Actual Wattage</div><div class="value">{light.watts}W</div></div>
+    <div class="spec-item"><div class="label">Coverage</div><div class="value">{light.coverage}</div></div>
+    <div class="spec-item"><div class="label">LED Chips</div><div class="value">{light.chips}</div></div>
+    <div class="spec-item"><div class="label">Dimmable</div><div class="value">{light.dimmable ? 'Yes' : 'No'}</div></div>
+    <div class="spec-item"><div class="label">Noise Level</div><div class="value">{light.noise}</div></div>
+    <div class="spec-item"><div class="label">Weight</div><div class="value">{light.weight} lbs</div></div>
+    <div class="spec-item"><div class="label">Watts per Dollar</div><div class="value">{wattsPerDollar}</div></div>
+  </div>
+
+  <div class="price-large" data-live-price>${light.price}</div>
+  <div class="rating-large">{'*'.repeat(Math.round(light.rating))}{' '.repeat(5-Math.round(light.rating))} {light.rating} ({light.reviews.toLocaleString()} reviews)</div>
+  <a href={link} target="_blank" rel="nofollow sponsored" class="buy-btn">Check Price on Amazon</a>
+</div>
+
+<a href="/" class="back-link" style="display:block;text-align:center;">Back to all lights</a>
+
+<div class="affiliate-note">
+  <p>We earn a commission if you click and buy through links on this site at no extra cost to you.</p>
+</div>
+
+<footer>
+  <p>Grow Light DB &copy; 2026 &middot; <a href="https://tabletopharvest.com">Tabletop Harvest</a></p>
+</footer>
+
+</body>
+</html>

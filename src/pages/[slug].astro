@@ -24,15 +24,18 @@ const wattsPerDollar = Math.round(light.watts / light.price * 100) / 100;
   <meta name="astro-dev-toolbar" content="false" />
   <meta property="og:title" content="{light.name} LED Grow Light Review — Specs, Price, Rating" />
   <meta property="og:description" content="{light.watts}W actual draw, covers {light.coverage}, {light.chips}, {light.rating} stars. Compare prices and specs." />
-  <meta property="og:url" content="https://growlightdb.ronaldleonardo.com/{light.id}" />
+  <meta property="og:url" content="https://growlightdb.tabletopharvest.com/{light.id}" />
   <meta property="og:type" content="article" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="canonical" href="https://growlightdb.ronaldleonardo.com/{light.id}" />
+  <link rel="canonical" href="https://growlightdb.tabletopharvest.com/{light.id}" />
   <title>{light.name} LED Grow Light — Specs, Price, and Review</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/images/favicon-192.png" />
   <script define:vars={{ buildLight: light }}>
     (async function(){
       try {
@@ -101,6 +104,24 @@ const wattsPerDollar = Math.round(light.watts / light.price * 100) / 100;
     .badge-large { background: #fce7f3; color: #9d174d; }
     .badge-quality { background: #e0e7ff; color: #3730a3; }
     .badge-commercial { background: #fef9c3; color: #854d0e; }
+.badge-entry { background: #f3e8ff; color: #6b21a8; }
+.badge-economy { background: #d1fae5; color: #065f46; }
+.badge-runner-up { background: #fef3c7; color: #b45309; }
+.badge-value-alt { background: #e0e7ff; color: #3730a3; }
+.badge-mid-range { background: #fef9c3; color: #854d0e; }
+.badge-power { background: #fce7f3; color: #be185d; }
+.gl-interlink {
+  max-width: 800px;
+  margin: 1.5rem auto;
+  padding: 0.85rem 1.25rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #166534;
+}
+.gl-interlink a { color: #15803d; font-weight: 600; }
     h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
     .subtitle { color: #6b7280; margin-bottom: 1.5rem; font-size: 0.95rem; }
 
@@ -166,7 +187,7 @@ const wattsPerDollar = Math.round(light.watts / light.price * 100) / 100;
   </div>
 </header>
 
-<div class="product-card">
+<div class="product-card" style="margin-bottom: 0;">
   <div>
     <h1>{light.name} <span class="badge {badgeClass}">{badgeLabel}</span></h1>
     <p class="subtitle">{light.watts}W LED grow light with {light.chips} chips. Covers {light.coverage}.</p>
@@ -190,13 +211,26 @@ const wattsPerDollar = Math.round(light.watts / light.price * 100) / 100;
 
 <a href="/" class="back-link" style="display:block;text-align:center;">Back to all lights</a>
 
+<div class="gl-interlink">
+  <p><strong>New to indoor growing?</strong> Read our <a href="https://tabletopharvest.com/posts/hydroponics-for-beginners" target="_blank">beginner hydroponics guide</a> or check <a href="https://tabletopharvest.com" target="_blank">Tabletop Harvest</a> for more growing tips.</p>
+</div>
+
 <div class="affiliate-note">
   <p>We earn a commission if you click and buy through links on this site at no extra cost to you.</p>
 </div>
 
 <footer>
-  <p>Grow Light DB &copy; 2026 &middot; <a href="https://tabletopharvest.com">Tabletop Harvest</a></p>
+  <p>Grow Light DB &copy; 2026 &middot; <a href="https://tabletopharvest.com" target="_blank">Tabletop Harvest</a></p>
 </footer>
+
+<script>
+document.querySelectorAll('a').forEach(function(a) {
+  if (a.hostname && a.hostname !== location.hostname && !a.getAttribute('target')) {
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+  }
+});
+</script>
 
 </body>
 </html>

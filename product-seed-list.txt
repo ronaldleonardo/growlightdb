@@ -1,0 +1,38 @@
+# Phase 1 Seed — Grow Light Products (50+)
+# Target: tiap produk punya id, name, search term, ASIN (kalo dapet), coverage, source
+# Format: id, name, search_term, asin (optional), coverage, price_est, notes
+
+Daftar ini bakal di-expand tiap minggu + dicek harganya via cron Jumat.
+
+## Top 30 (Popular, sudah verified exist di Amazon)
+
+- spider-farmer-sf-1000|Spider Farmer SF-1000 100W|Spider+Farmer+SF-1000|B07TS82HWB|2x2 ft|80|Dimmable Samsung LM301B
+- mars-hydro-ts-1000|Mars Hydro TS-1000 150W|Mars+Hydro+TS-1000|B07PLY1WKK|2x2 ft flower|110|Dimmable Samsung LM301B
+- viparspectra-xs1500|VIPARSPECTRA XS1500 Pro 150W|VIPARSPECTRA+XS1500+Pro|B0BNVFMJ5J|2x2 ft flower|85|Lens dimming Samsung LM301H
+- barrina-t5-4pack|Barrina T5 4-Pack 40W|Barrina+T5+LED+grow+light+4+pack|B09QRMKCVK|2x4 ft|40|LED strip, non-dimmable
+- aerogarden-harvest|AeroGarden Harvest 20W|AeroGarden+Harvest|B01A0UK8U0|Countertop|95|Countertop kit
+- hlg-100-rspec|HLG 100 RSpec 100W|HLG+100+RSpec|B07S6XXX|2x2 ft|150|Premium Samsung LM301H
+- spider-farmer-sf-2000|Spider Farmer SF-2000 200W|Spider+Farmer+SF-2000|B08LHXYXXX|3x3 ft|200|Upgrade pick
+- mars-hydro-fc-3000|Mars Hydro FC-3000 300W|Mars+Hydro+FC-3000|B09B1CXXX|3x3 ft|230|Large coverage
+- ac-infinity-ionbeam|AC Infinity IONBEAM S16 42W|AC+Infinity+IONBEAM+S16|B0C6...|2x2 ft supp|90|Supplemental bar light
+- viparspectra-p600|VIPARSPECTRA P600 65W|VIPARSPECTRA+P600|B076QMF5|2x2 ft|70|Entry-level, non-dimmable
+- growers-choice-roi-e720|Growers Choice ROI-E720 720W|Growers+Choice+ROI-E720|B0...|5x5 ft|550|Commercial grade
+- phlizon-cree-cob|Phlizon CREE COB 2000W 85W|Phlizon+CREE+COB+2000W|B07T2XXX|2.5x2.5 ft|90|Budget COB
+- unit-farm-uf-2000|Unit Farm UF-2000 100W|Unit+Farm+UF-2000|B08QXXX|2x2 ft|110|Samsung LM301B
+- maxsisun-pb-2000|Maxsisun PB-2000 150W|Maxsisun+PB-2000|B08LXXX|2.5x2.5 ft|140|Budget power
+- vivosun-vs1000|Vivosun VS1000 100W|Vivosun+VS1000|B08SCXXX|2x2 ft|100|Economy Samsung
+- marshydro-ts-600|Mars Hydro TS-600 100W|Mars+Hydro+TS-600|B07QTYGXH|2x2 ft|65|Ultra budget
+- spiderfarmer-sf-4000|Spider Farmer SF-4000 450W|Spider+Farmer+SF-4000|B08TCXXX|4x4 ft|370|Large tent
+- ac-infinity-ionboard-s22|AC Infinity IONBOARD S22 110W|AC+Infinity+IONBOARD+S22|B09G...|2x2 ft|100|Samsung LM301B board
+- marshydro-fc-e3000|Mars Hydro FC-E3000 300W|Mars+Hydro+FC-E3000|B09C...|3x3 ft|260|E-series bar light
+- viparspectra-ks5000|VIPARSPECTRA KS5000 500W|VIPARSPECTRA+KS5000|B09P...|4x4 ft|350|Commercial
+- growlights-depot-spectrum-king|Spectrum King SK402 650W|Spectrum+King+SK402|N/A|5x5 ft|450|Full spectrum
+- gavita-1700e|Gavita 1700E 650W|Gavita+1700E|N/A|5x5 ft|500|Top-tier commercial
+- marshydro-sp-150|Mars Hydro SP-150 150W|Mars+Hydro+SP-150|B07Z...|2x2 ft|120|Tent specific
+- thinkgrow-model-h|ThinkGrow Model H 950W|ThinkGrow+Model+H|N/A|6x6 ft|700|Sealed commercial
+- california-lightworks-solar-1000|California Lightworks Solar X 1000W|California+Lightworks+Solar+X|N/A|5x5 ft|1000|UV+IR full spectrum
+- hlg-scorpion-dioscr|HLG Scorpion Diablo 1000W|HLG+Scorpion+Diablo|B09D...|5x5 ft|900|High-end bar
+- migro-aray-4|Migro Aray 4 240W|Migro+Aray+4|B08G...|3x3 ft|230|Best value
+- medicgrow-fold-8|Medic Grow Fold-8 800W|Medic+Grow+Fold+8|N/A|5x5 ft|600|Folding bar light
+- kind-led-x750|Kind LED X750 750W|Kind+LED+X750|N/A|5x5 ft|700|Full spectrum
+- bloom-plus-xp-2500|BloomPlus XP-2500 250W|BloomPlus+XP-2500|B09B...|3x3 ft|160|Budget wide spectrum

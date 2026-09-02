@@ -20,15 +20,18 @@ const sortOptions = [
   <meta name="astro-dev-toolbar" content="false" />
   <meta property="og:title" content="Grow Light DB — Compare LED Grow Lights" />
   <meta property="og:description" content="Side-by-side comparison of 15 LED grow lights. Filter by price, wattage, coverage. Real specs, honest picks." />
-  <meta property="og:url" content="https://growlightdb.ronaldleonardo.com" />
+  <meta property="og:url" content="https://growlightdb.tabletopharvest.com" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="canonical" href="https://growlightdb.ronaldleonardo.com" />
+  <link rel="canonical" href="https://growlightdb.tabletopharvest.com" />
   <title>Grow Light DB — Compare 15 LED Grow Lights Side by Side</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/images/favicon-192.png" />
   <script define:vars={{ buildLights: lights }}>
     (async function(){
       try {
@@ -172,6 +175,24 @@ const sortOptions = [
     .badge-quality { background: #e0e7ff; color: #3730a3; }
     .badge-commercial { background: #fef9c3; color: #854d0e; }
     .badge-cheap { background: #fce7f3; color: #9d174d; }
+.badge-entry { background: #f3e8ff; color: #6b21a8; }
+.badge-economy { background: #d1fae5; color: #065f46; }
+.badge-runner-up { background: #fef3c7; color: #b45309; }
+.badge-value-alt { background: #e0e7ff; color: #3730a3; }
+.badge-mid-range { background: #fef9c3; color: #854d0e; }
+.badge-power { background: #fce7f3; color: #be185d; }
+.gl-interlink {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 0.85rem 1.25rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #166534;
+}
+.gl-interlink a { color: #15803d; font-weight: 600; }
     .light-card .specs {
       display: flex;
       flex-wrap: wrap;
@@ -273,7 +294,7 @@ const sortOptions = [
       <div class="light-card" data-cat={light.best} data-price={light.price} data-watts={light.watts} data-rating={light.rating} data-deal={wattsPerDollar}>
         <div class="left">
           <div class="name">
-            <a href="/{light.id}">{light.name}</a>
+            <a href={`/${light.id}`}>{light.name}</a>
             <span class={`badge ${badgeClass}`}>{badgeLabel}</span>
           </div>
           <div class="specs">
@@ -304,8 +325,12 @@ const sortOptions = [
   <p>We earn a commission if you click and buy through links on this site at no extra cost to you. All data sourced from manufacturer specs and verified user reviews.</p>
 </div>
 
+<div class="gl-interlink">
+  <p><strong>New to indoor growing?</strong> Read our <a href="https://tabletopharvest.com/posts/hydroponics-for-beginners" target="_blank">complete beginner guide</a> or visit <a href="https://tabletopharvest.com" target="_blank">Tabletop Harvest</a> for growing tips and product reviews.</p>
+</div>
+
 <footer>
-  <p>Grow Light DB &copy; 2026 &middot; <a href="https://tabletopharvest.com">Tabletop Harvest</a> &middot; Data from manufacturer specs and verified reviews</p>
+  <p>Grow Light DB &copy; 2026 &middot; <a href="https://tabletopharvest.com" target="_blank">Tabletop Harvest</a> &middot; Data from manufacturer specs and verified reviews</p>
 </footer>
 
 <script>
@@ -350,6 +375,14 @@ function render() {
   cards.forEach(card => { card.style.display = visible.includes(card) ? '' : 'none'; });
   noResults.style.display = visible.length === 0 ? '' : 'none';
 }
+
+// Open all external links in new tab
+document.querySelectorAll('a').forEach(function(a) {
+  if (a.hostname && a.hostname !== location.hostname && !a.getAttribute('target')) {
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+  }
+});
 </script>
 
 </body>

@@ -3,7 +3,7 @@
     {
       "id": "spider-farmer-sf-1000",
       "name": "Spider Farmer SF-1000",
-      "price": 80,
+      "price": 70,
       "watts": 100,
       "coverage": "2x2 ft",
       "chips": "Samsung LM301B",
@@ -12,7 +12,6 @@
       "rating": 4.6,
       "reviews": 5800,
       "best": "overall",
-      "asin": "B07TS82HWB",
       "search": "Spider+Farmer+SF-1000+LED+grow+light"
     },
     {
@@ -27,7 +26,6 @@
       "rating": 4.6,
       "reviews": 3600,
       "best": "value",
-      "asin": "B07PLY1WKK",
       "search": "Mars+Hydro+TS-1000+LED+grow+light"
     },
     {
@@ -42,7 +40,6 @@
       "rating": 4.5,
       "reviews": 1800,
       "best": "runner-up",
-      "asin": "B0BNVFMJ5J",
       "search": "Viparspectra+XS1500+Pro+LED+grow+light"
     },
     {
@@ -57,7 +54,6 @@
       "rating": 4.6,
       "reviews": 8900,
       "best": "budget",
-      "asin": "B09QRMKCVK",
       "search": "Barrina+T5+4-Pack+LED+grow+light"
     },
     {
@@ -72,7 +68,6 @@
       "rating": 4.4,
       "reviews": 15000,
       "best": "starter",
-      "asin": "B01A0UK8U0",
       "search": "AeroGarden+Harvest+LED+grow+light"
     },
     {
@@ -87,13 +82,12 @@
       "rating": 4.7,
       "reviews": 2100,
       "best": "quality",
-      "asin": "",
       "search": "HLG+100+RSpec+LED+grow+light"
     },
     {
       "id": "spider-farmer-sf-2000",
       "name": "Spider Farmer SF-2000",
-      "price": 200,
+      "price": 146,
       "watts": 200,
       "coverage": "3x3 ft",
       "chips": "Samsung LM301B",
@@ -102,7 +96,6 @@
       "rating": 4.7,
       "reviews": 4100,
       "best": "upgrade",
-      "asin": "B08LHXYXXX",
       "search": "Spider+Farmer+SF-2000+LED+grow+light"
     },
     {
@@ -117,7 +110,6 @@
       "rating": 4.6,
       "reviews": 1900,
       "best": "large",
-      "asin": "",
       "search": "Mars+Hydro+FC-3000+LED+grow+light"
     },
     {
@@ -132,7 +124,6 @@
       "rating": 4.5,
       "reviews": 1600,
       "best": "mid-range",
-      "asin": "B0C67BVDVH",
       "search": "AC+Infinity+IONBEAM+S16+LED+grow+light"
     },
     {
@@ -147,7 +138,6 @@
       "rating": 4.4,
       "reviews": 5200,
       "best": "entry",
-      "asin": "",
       "search": "VIPARSPECTRA+P600+LED+grow+light"
     },
     {
@@ -162,7 +152,6 @@
       "rating": 4.8,
       "reviews": 1200,
       "best": "commercial",
-      "asin": "",
       "search": "Growers+Choice+ROI-E720+LED+grow+light"
     },
     {
@@ -177,7 +166,6 @@
       "rating": 4.2,
       "reviews": 3600,
       "best": "cheap",
-      "asin": "",
       "search": "Phlizon+CREE+COB+2000W+LED+grow+light"
     },
     {
@@ -192,7 +180,6 @@
       "rating": 4.4,
       "reviews": 1100,
       "best": "value-alt",
-      "asin": "",
       "search": "Unit+Farm+UF-2000+LED+grow+light"
     },
     {
@@ -207,7 +194,6 @@
       "rating": 4.5,
       "reviews": 2100,
       "best": "power",
-      "asin": "",
       "search": "Maxsisun+PB-2000+LED+grow+light"
     },
     {
@@ -222,7 +208,6 @@
       "rating": 4.4,
       "reviews": 1400,
       "best": "economy",
-      "asin": "",
       "search": "Vivosun+VS1000+LED+grow+light"
     },
     {
@@ -237,7 +222,6 @@
       "rating": 4.3,
       "reviews": 8500,
       "best": "budget",
-      "asin": "B07QTYGXH",
       "search": "Mars+Hydro+TS-600+LED+grow+light"
     },
     {
@@ -252,7 +236,6 @@
       "rating": 4.4,
       "reviews": 3200,
       "best": "entry",
-      "asin": "",
       "search": "VIPARSPECTRA+XS1000+LED+grow+light"
     },
     {
@@ -267,7 +250,6 @@
       "rating": 4.5,
       "reviews": 2800,
       "best": "upgrade",
-      "asin": "",
       "search": "VIPARSPECTRA+P2000+LED+grow+light"
     },
     {
@@ -282,7 +264,6 @@
       "rating": 4.7,
       "reviews": 2100,
       "best": "large",
-      "asin": "",
       "search": "Spider+Farmer+SF-3000+LED+grow+light"
     },
     {
@@ -297,7 +278,6 @@
       "rating": 4.7,
       "reviews": 1500,
       "best": "commercial",
-      "asin": "B08NV52CN7",
       "search": "Spider+Farmer+SF7000+LED+grow+light"
     },
     {
@@ -312,7 +292,6 @@
       "rating": 4.7,
       "reviews": 800,
       "best": "value",
-      "asin": "B0C4M37X6F",
       "search": "AC+Infinity+IONFRAME+EVO3+LED+grow+light"
     },
     {
@@ -327,7 +306,6 @@
       "rating": 4.8,
       "reviews": 600,
       "best": "large",
-      "asin": "B0C4M4PBGG",
       "search": "AC+Infinity+IONFRAME+EVO8+LED+grow+light"
     },
     {
@@ -342,7 +320,6 @@
       "rating": 4.6,
       "reviews": 1200,
       "best": "upgrade",
-      "asin": "",
       "search": "Mars+Hydro+FC-4800+LED+grow+light"
     },
     {
@@ -357,7 +334,6 @@
       "rating": 4.8,
       "reviews": 900,
       "best": "quality",
-      "asin": "",
       "search": "HLG+300L+RSpec+LED+grow+light"
     },
     {
@@ -372,7 +348,6 @@
       "rating": 4.6,
       "reviews": 700,
       "best": "value-alt",
-      "asin": "",
       "search": "Migro+Aray+4+LED+grow+light"
     },
     {
@@ -387,7 +362,6 @@
       "rating": 4.7,
       "reviews": 1100,
       "best": "commercial",
-      "asin": "",
       "search": "Gavita+1700E+LED+grow+light"
     },
     {
@@ -402,7 +376,6 @@
       "rating": 4.4,
       "reviews": 1400,
       "best": "economy",
-      "asin": "",
       "search": "BloomPlus+XP-2500+LED+grow+light"
     },
     {
@@ -417,7 +390,6 @@
       "rating": 4.7,
       "reviews": 500,
       "best": "large",
-      "asin": "",
       "search": "Medic+Grow+Fold-8+LED+grow+light"
     },
     {
@@ -432,7 +404,6 @@
       "rating": 4.5,
       "reviews": 600,
       "best": "commercial",
-      "asin": "",
       "search": "Kind+LED+X750+LED+grow+light"
     },
     {
@@ -447,7 +418,6 @@
       "rating": 4.8,
       "reviews": 400,
       "best": "quality",
-      "asin": "",
       "search": "HLG+650R+RSpec+LED+grow+light"
     }
   ],
@@ -482,6 +452,5 @@
     }
   ],
   "tag": "tabletopharve-20",
-  "count": 30,
-  "updated": "2026-09-01"
+  "updated": "2026-09-04"
 }

@@ -1,14 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://growlightdb.ronaldleonardo.com/sitemap.xml
-
-# AI crawlers
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
+Sitemap: https://growlightdb.tabletopharvest.com/sitemap-index.xml

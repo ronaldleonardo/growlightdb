@@ -17,7 +17,7 @@
     {
       "id": "mars-hydro-ts-1000",
       "name": "Mars Hydro TS-1000",
-      "price": 110,
+      "price": 80,
       "watts": 150,
       "coverage": "2x2 flower / 3x3 veg",
       "chips": "Samsung LM301B",
@@ -31,7 +31,7 @@
     {
       "id": "viparspectra-xs1500",
       "name": "Viparspectra XS1500 Pro",
-      "price": 85,
+      "price": 100,
       "watts": 150,
       "coverage": "2x2 flower / 3x3 veg",
       "chips": "Samsung LM301H",
@@ -59,7 +59,7 @@
     {
       "id": "aerogarden-harvest",
       "name": "AeroGarden Harvest",
-      "price": 95,
+      "price": 80,
       "watts": 20,
       "coverage": "Countertop",
       "chips": "LED",
@@ -101,7 +101,7 @@
     {
       "id": "mars-hydro-fc-3000",
       "name": "Mars Hydro FC-3000",
-      "price": 230,
+      "price": 200,
       "watts": 300,
       "coverage": "3x3 ft",
       "chips": "Samsung LM301B",
@@ -143,7 +143,7 @@
     {
       "id": "growers-choice-roi-e720",
       "name": "Growers Choice ROI-E720",
-      "price": 550,
+      "price": 720,
       "watts": 720,
       "coverage": "5x5 ft",
       "chips": "Samsung LM301H",
@@ -199,7 +199,7 @@
     {
       "id": "vivosun-vs1000",
       "name": "Vivosun VS1000",
-      "price": 100,
+      "price": 76,
       "watts": 100,
       "coverage": "2x2 ft",
       "chips": "Samsung LM301B",
@@ -452,5 +452,5 @@
     }
   ],
   "tag": "tabletopharve-20",
-  "updated": "2026-09-04"
+  "updated": "2026-09-09"
 }
